@@ -1,38 +1,49 @@
+import { useState } from "react";
 
 function Contact() {
-  // State for form inputs
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: ""
+  });
 
-  // Form submission handler
-  const handleSubmit = (event) => {
-    event.preventDefault(); // Prevent page refresh
-    console.log("Form submitted:", { name, email });
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("Form submitted!");
   };
 
   return (
-    <div>
-      <h2>Contact Us</h2>
+    <div style={{ padding: "20px", textAlign: "center" }}>
+      <h1>Contact Us</h1>
       <form onSubmit={handleSubmit}>
-        <label>Name:</label>
         <input
           type="text"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
+          name="name"
           placeholder="Your Name"
-          required
+          value={formData.name}
+          onChange={handleChange}
+          style={{ display: "block", margin: "10px auto", padding: "8px" }}
         />
-
-        <label>Email:</label>
         <input
           type="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          name="email"
           placeholder="Your Email"
-          required
+          value={formData.email}
+          onChange={handleChange}
+          style={{ display: "block", margin: "10px auto", padding: "8px" }}
         />
-
-        <button type="submit">Submit</button>
+        <textarea
+          name="message"
+          placeholder="Your Message"
+          value={formData.message}
+          onChange={handleChange}
+          style={{ display: "block", margin: "10px auto", padding: "8px", width: "80%" }}
+        />
+        <button type="submit" style={{ padding: "10px 20px", cursor: "pointer" }}>Send Message</button>
       </form>
     </div>
   );
