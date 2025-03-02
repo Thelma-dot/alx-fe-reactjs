@@ -8,14 +8,14 @@ const EditRecipeForm = ({ recipe }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    updateRecipe({ id: recipe.id, title, description });
+   updateRecipe({ ...recipe, title, description });
   };
 
 
   const handleSubmit = (event) => {
-    event.preventDefault(); // ✅ Explicitly included here to prevent default form submission
+    event.preventDefault(); 
     updateRecipe(recipe.id, updatedRecipe);
-    onClose(); // Close the form after submitting
+    onClose(); 
   };
 
     return (
