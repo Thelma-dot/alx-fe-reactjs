@@ -21,6 +21,15 @@ const App = () => {
   );
 };
 
+function App() {
+  return (
+    <div>
+      <SearchBar />
+      <RecipeList />
+    </div>
+  );
+}
+
 const App = () => {
   return (
     <Router>
