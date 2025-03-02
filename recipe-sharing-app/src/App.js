@@ -24,15 +24,20 @@ const sampleRecipes = [
   },
 ];
 const App = () => {
-  const { setRecipes } = useRecipeStore();
+  const setRecipes = useRecipeStore(state => state.setRecipes);
 
   useEffect(() => {
+    const sampleRecipes = [
+      { id: 1, title: "Spaghetti Bolognese", prepTime: 30, ingredients: ["spaghetti", "beef", "tomato"] },
+      { id: 2, title: "Chicken Salad", prepTime: 15, ingredients: ["chicken", "lettuce", "dressing"] },
+      { id: 3, title: "Pancakes", prepTime: 20, ingredients: ["flour", "milk", "eggs"] }
+    ];
     setRecipes(sampleRecipes);
   }, [setRecipes]);
 
   return (
-    <div className="p-6">
-      <h1 className="text-2xl font-bold mb-4">Recipe Sharing App</h1>
+    <div>
+      <h1>Recipe Sharing App</h1>
       <SearchBar />
       <IngredientFilter />
       <TimeFilter />
