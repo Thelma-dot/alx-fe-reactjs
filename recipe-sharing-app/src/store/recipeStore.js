@@ -30,4 +30,39 @@ setRecipes: (recipes) => set({ recipes, filteredRecipes: recipes }),
     recipes: state.recipes.filter(recipe => recipe.id !== id)
   })),
 }));
+const useRecipeStore = create((set) => ({
+  recipes: [],
+  searchTerm: '',
+  ingredientFilter: '',
+  timeFilter: '',
+  filteredRecipes: [],
+
+  setSearchTerm: (term) =>
+    set((state) => ({
+      searchTerm: term,
+      filteredRecipes: state.recipes.filter((recipe) =>
+        recipe.title.toLowerCase().includes(term.toLowerCase())
+      ),
+    })),
+
+  setIngredientFilter: (ingredient) =>
+    set((state) => ({
+      ingredientFilter: ingredient,
+      filteredRecipes: state.recipes.filter((recipe) =>
+        recipe.ingredients.some((ing) =>
+          ing.toLowerCase().includes(ingredient.toLowerCase())
+        )
+      ),
+    })),
+
+  setTimeFilter: (time) =>
+    set((state) => ({
+      timeFilter: time,
+      filteredRecipes: state.recipes.filter((recipe) =>
+        recipe.preparationTime <= time
+      ),
+    })),
+}));
+
 export default useRecipeStore;
+
