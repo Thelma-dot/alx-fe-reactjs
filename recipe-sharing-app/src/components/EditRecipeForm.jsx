@@ -1,5 +1,5 @@
 import { useState } from "react";
-import useRecipeStore from "./components/recipeStore";
+import useRecipeStore from "./recipeStore";
 
 const EditRecipeForm = ({ recipe, onClose }) => {
   const [updatedRecipe, setUpdatedRecipe] = useState({
@@ -13,14 +13,14 @@ const EditRecipeForm = ({ recipe, onClose }) => {
     setUpdatedRecipe({ ...updatedRecipe, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault(); // ✅ Explicitly included here to prevent default form submission
     updateRecipe(recipe.id, updatedRecipe);
-    onClose(); 
+    onClose(); // Close the form after submitting
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={(event) => handleSubmit(event)}> {/* Ensures event is passed */}
       <h2>Edit Recipe</h2>
       <label>
         Title:
