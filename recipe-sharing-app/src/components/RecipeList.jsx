@@ -1,5 +1,5 @@
 import React from 'react';
-import useRecipeStore from '../store/recipeStore';
+import useRecipeStore from './recipeStore';
 import RecipeItem from "./RecipeItem";
 
 
@@ -15,6 +15,15 @@ const displayedRecipes = filteredRecipes.length > 0 ? filteredRecipes : recipes;
         <p className="text-gray-500">No recipes found.</p>
       )}
     </div>
+  );
+};
+
+ return (
+    <ul>
+      {filteredRecipes.map(recipe => (
+        <li key={recipe.id}>{recipe.title}</li>
+      ))}
+    </ul>
   );
 };
 
