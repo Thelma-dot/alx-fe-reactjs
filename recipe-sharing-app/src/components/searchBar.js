@@ -1,25 +1,16 @@
-// components/SearchBar.js
 import React from 'react';
-import useRecipeStore from '../store/recipeStore';
+import useRecipeStore from './recipeStore';
 
 const SearchBar = () => {
-  const { setSearchTerm, filterRecipes } = useRecipeStore(state => ({
-    setSearchTerm: state.setSearchTerm,
-    filterRecipes: state.filterRecipes
-  }));
-
-  const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
-    filterRecipes();
-  };
+  const setSearchTerm = useRecipeStore(state => state.setSearchTerm);
 
   return (
     <input
       type="text"
-      placeholder="Search recipes by name, ingredient, or time..."
-      onChange={handleSearch}
+      placeholder="Search recipes..."
+      onChange={(e) => setSearchTerm(e.target.value)}
+      className="search-bar"
     />
   );
 };
-
 export default SearchBar;
