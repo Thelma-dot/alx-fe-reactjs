@@ -30,12 +30,21 @@ setRecipes: (recipes) => set({ recipes, filteredRecipes: recipes }),
     recipes: state.recipes.filter(recipe => recipe.id !== id)
   })),
 }));
-const useRecipeStore = create((set) => ({
+const useRecipeStore = create(set => ({
   recipes: [],
   searchTerm: '',
-  ingredientFilter: '',
-  timeFilter: '',
+  setSearchTerm: (term) => set({ searchTerm: term }),
   filteredRecipes: [],
+  filterRecipes: () => set(state => ({
+    filteredRecipes: state.recipes.filter(recipe =>
+      recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase()) ||
+      recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(state.searchTerm.toLowerCase())) ||
+      recipe.prepTime.toString().includes(state.searchTerm)
+    )
+  })),
+  setRecipes: (newRecipes) => set({ recipes: newRecipes, filteredRecipes: newRecipes })
+}));
+
 
   setSearchTerm: (term) =>
     set((state) => ({
