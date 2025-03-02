@@ -18,4 +18,5 @@ const displayedRecipes = filteredRecipes.length > 0 ? filteredRecipes : recipes;
   );
 };
 
+
 export default RecipeList;
