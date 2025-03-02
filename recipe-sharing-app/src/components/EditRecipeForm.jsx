@@ -16,7 +16,7 @@ const EditRecipeForm = ({ recipe, onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     updateRecipe(recipe.id, updatedRecipe);
-    onClose(); // Close the form after submitting
+    onClose(); 
   };
 
   return (
