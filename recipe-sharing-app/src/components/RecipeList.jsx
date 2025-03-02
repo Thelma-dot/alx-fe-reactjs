@@ -2,7 +2,7 @@ import React from 'react';
 import useRecipeStore from "./recipeStore";
 
 const RecipeList = () => {
-  const recipes = useRecipeStore((state) => state.recipes); 
+  const recipes = useRecipeStore(state => state.filteredRecipes); 
 
   return (
     <div>
@@ -21,7 +21,13 @@ const RecipeList = () => {
       )}
     </div>
   );
+  <ul>
+      {filteredRecipes.map(recipe => (
+        <li key={recipe.id}>{recipe.title}</li>
+      ))}
+    </ul>
 };
+
 
 export default RecipeList;
 
