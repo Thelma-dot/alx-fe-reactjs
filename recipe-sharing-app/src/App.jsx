@@ -1,7 +1,8 @@
 import { useState } from "react";
-import AddRecipeForm from "./components/AddRecipeForm"; // ✅ Ensure correct import path
-import RecipeList from "./components/RecipeList"; // ✅ Ensure correct import path
-
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import RecipeList from "./RecipeList";
+import AddRecipeForm from "./components/AddRecipeForm"; 
+import RecipeList from "./components/RecipeList"; 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
 
@@ -17,5 +18,18 @@ const App = () => {
     </div>
   );
 };
+
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<RecipeList />} />
+        <Route path="/add" element={<AddRecipeForm />} />
+        <Route path="/recipe/:id" element={<RecipeDetails />} />
+      </Routes>
+    </Router>
+  );
+}
+
 
 export default App;
