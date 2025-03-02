@@ -4,7 +4,7 @@ import RecipeItem from "./RecipeItem";
 
 
 const RecipeList = () => {
-  const { filteredRecipes } = useRecipeStore();
+   const filteredRecipes = useRecipeStore(state => state.filteredRecipes);
 const displayedRecipes = filteredRecipes.length > 0 ? filteredRecipes : recipes;
   
    return (
@@ -18,5 +18,21 @@ const displayedRecipes = filteredRecipes.length > 0 ? filteredRecipes : recipes;
   );
 };
 
+ return (
+    <div>
+      {filteredRecipes.length > 0 ? (
+        filteredRecipes.map(recipe => (
+          <div key={recipe.id}>
+            <h2>{recipe.title}</h2>
+            <p>Ingredients: {recipe.ingredients.join(', ')}</p>
+            <p>Preparation Time: {recipe.prepTime} mins</p>
+          </div>
+        ))
+      ) : (
+        <p>No recipes found.</p>
+      )}
+    </div>
+  );
+};
 
 export default RecipeList;
