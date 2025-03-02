@@ -1,4 +1,4 @@
-import { create } from "zustand";
+import create from 'zustand';
 
 const useRecipeStore = create((set, get) => ({
   recipes: [
@@ -14,7 +14,13 @@ const useRecipeStore = create((set, get) => ({
   filteredRecipes: [],
   
 
-  setSearchTerm: (term) => {
+  setSearchTerm: (term) => 
+    set((state) =>{
+    const filtered = state.recipes.filter((recipe) =>
+        recipe.title.toLowerCase().includes(term.toLowerCase())
+      );
+      return { searchTerm: term, filteredRecipes: filtered };
+    }),
     set({ searchTerm: term });
     get().filterRecipes();
   },
