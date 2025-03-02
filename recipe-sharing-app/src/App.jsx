@@ -4,6 +4,8 @@ import RecipeList from "./components/RecipeList";
 import AddRecipeForm from "./components/AddRecipeForm"; 
 import RecipeList from "./components/RecipeList"; 
 import SearchBar from './components/SearchBar';
+import Home from "./pages/Home";
+import RecipeDetails from "./pages/RecipeDetails";
 
 const App = () => {
   const [recipes, setRecipes] = useState([]);
@@ -45,6 +47,19 @@ const App = () => {
     </Router>
   );
 };
+
+function App() {
+  return (
+    <Router>
+      <div className="App">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/recipe/:id" element={<RecipeDetails />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
 
 
 export default App;
