@@ -4,6 +4,7 @@ const useRecipeStore = create((set) => ({
   recipes: [],
   
   setRecipes: (newRecipes) => set({ recipes: newRecipes }),
+  
   addRecipe: (newRecipe) =>
     set((state) => ({ recipes: [...state.recipes, newRecipe] })),
 
