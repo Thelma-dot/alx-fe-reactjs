@@ -6,6 +6,7 @@ import SearchBar from './components/SearchBar';
 import IngredientFilter from './components/IngredientFilter';
 import TimeFilter from './components/TimeFilter';
 import RecipeList from './components/RecipeList';
+import Home from "./pages/Home";
 
 const sampleRecipes = [
   {
@@ -45,5 +46,11 @@ const App = () => {
     </div>
   );
 };
-
+function App() {
+  return (
+    <div className="App">
+      <Home />
+    </div>
+  );
+}
 export default App;
