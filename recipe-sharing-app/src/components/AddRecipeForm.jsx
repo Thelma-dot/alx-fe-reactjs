@@ -1,31 +1,33 @@
 import { useState } from "react";
+import useRecipeStore from "./recipeStore";
 
-const AddRecipeForm = ({ addRecipe }) => {
+const AddRecipeForm = () => {
   const [title, setTitle] = useState("");
-  const [ingredients, setIngredients] = useState("");
+  const [description, setDescription] = useState(""); // ✅ Added state for textarea
+  const addRecipe = useRecipeStore((state) => state.addRecipe);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title || !ingredients) return;
-
-    addRecipe({ title, ingredients: ingredients.split(", ") });
+    if (!title || !description) return; // Prevent empty submissions
+    addRecipe({ title, description });
     setTitle("");
-    setIngredients("");
+    setDescription(""); // ✅ Clear textarea after submission
   };
 
   return (
-    <form onSubmit={handleSubmit} className="recipe-form">
+    <form onSubmit={handleSubmit}>
       <input
         type="text"
         placeholder="Recipe Title"
         value={title}
         onChange={(e) => setTitle(e.target.value)}
+        required
       />
-      <input
-        type="text"
-        placeholder="Ingredients (comma-separated)"
-        value={ingredients}
-        onChange={(e) => setIngredients(e.target.value)}
+      <textarea
+        placeholder="Recipe Description" // ✅ Added textarea
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+        required
       />
       <button type="submit">Add Recipe</button>
     </form>
