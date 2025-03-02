@@ -18,7 +18,7 @@ const useRecipeStore = create((set) => ({
 
   
 
-  setRecipes: (newRecipes) => set({ recipes: newRecipes }) // ✅ Added setRecipes
+  setRecipes: (newRecipes) => set({ recipes: newRecipes }) 
 }));
 
 export default useRecipeStore;
