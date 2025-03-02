@@ -1,3 +1,4 @@
+import React from 'react';
 import useRecipeStore from "./recipeStore";
 
 const RecipeList = () => {
@@ -24,6 +25,4 @@ const RecipeList = () => {
 
 export default RecipeList;
 
-};
 
-export default RecipeList;
