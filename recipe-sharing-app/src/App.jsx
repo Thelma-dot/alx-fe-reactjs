@@ -19,17 +19,17 @@ const App = () => {
   );
 };
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/" element={<RecipeList />} />
-        <Route path="/add" element={<AddRecipeForm />} />
         <Route path="/recipe/:id" element={<RecipeDetails />} />
+        <Route path="/add" element={<AddRecipeForm />} />
       </Routes>
     </Router>
   );
-}
+};
 
 
 export default App;
