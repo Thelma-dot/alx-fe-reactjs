@@ -1,4 +1,5 @@
-import { useRecipeStore } from './recipeStore';
+import React from 'react';
+import { useRecipeStore } from '../store/recipeStore';
 
 const SearchBar = () => {
   const setSearchTerm = useRecipeStore(state => state.setSearchTerm);
@@ -7,6 +8,7 @@ const SearchBar = () => {
     <input
       type="text"
       placeholder="Search recipes..."
+      className="border p-2 rounded-md w-full"
       onChange={(e) => setSearchTerm(e.target.value)}
     />
   );
