@@ -1,44 +1,13 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import RegistrationForm from "./RegistrationForm";
-import FormikForm from "./components/formikForm";
+import RegistrationForm from "./components/RegistrationForm";
+import FormikForm from "./components/FormikForm";
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <div>
-      {/* Logo Section */}
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-
-      {/* Counter Section */}
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-
-      {/* User Registration Forms */}
-      <h1>User Registration (Controlled Components)</h1>
+      <h1>Controlled Form</h1>
       <RegistrationForm />
-
-      <h1>User Registration (Formik)</h1>
+      
+      <h1>Formik Form</h1>
       <FormikForm />
     </div>
   );
