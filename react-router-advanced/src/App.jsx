@@ -4,8 +4,9 @@ import Home from './pages/Home';
 import Profile from './components/Profile';
 import ProfileDetails from './pages/ProfileDetails';
 import ProfileSettings from './pages/ProfileSettings';
-import BlogPost from './pages/BlogPost';
 import ProtectedRoute from './components/ProtectedRoute';
+import BlogPost from './pages/BlogPost';
+
 
 export default function App() {
   return (
