@@ -11,22 +11,39 @@ const RegistrationForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData({ ...formData, [name]: value });
+    setFormData({ ...formData, [name]: value.trim() });
   };
 
   const validateForm = () => {
     let newErrors = {};
-    if (!formData.username) newErrors.username = "Username is required";
-    if (!formData.email) newErrors.email = "Email is required";
-    if (!formData.password) newErrors.password = "Password is required";
+
+    if (!formData.username) {
+      newErrors.username = "Username is required";
+    }
+
+    if (!formData.email) {
+      newErrors.email = "Email is required";
+    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+      newErrors.email = "Invalid email format";
+    }
+
+    if (!formData.password) {
+      newErrors.password = "Password is required";
+    } else if (formData.password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters";
+    }
+
     return newErrors;
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const validationErrors = validateForm();
+
     if (Object.keys(validationErrors).length === 0) {
       console.log("Form submitted:", formData);
+      setFormData({ username: "", email: "", password: "" }); // Clear form
+      setErrors({});
     } else {
       setErrors(validationErrors);
     }
