@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import Profile from './pages/Profile';
@@ -7,25 +7,22 @@ import ProfileSettings from './pages/ProfileSettings';
 import BlogPost from './pages/BlogPost';
 import ProtectedRoute from './components/ProtectedRoute';
 
-const router = createBrowserRouter([
-  {
-    path: '/',
-    element: <Layout />,
-    children: [
-      { path: '', element: <Home /> },
-      { 
-        path: 'profile', 
-        element: <ProtectedRoute><Profile /></ProtectedRoute>,
-        children: [
-          { path: 'details', element: <ProfileDetails /> },
-          { path: 'settings', element: <ProfileSettings /> },
-        ]
-      },
-      { path: 'blog/:postId', element: <BlogPost /> } // Dynamic Route
-    ],
-  },
-]);
-
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route 
+            path="profile" 
+            element={<ProtectedRoute><Profile /></ProtectedRoute>}
+          >
+            <Route path="details" element={<ProfileDetails />} />
+            <Route path="settings" element={<ProfileSettings />} />
+          </Route>
+          <Route path="blog/:postId" element={<BlogPost />} />
+        </Route>
+      </Routes>
+    </Router>
+  );
 }
