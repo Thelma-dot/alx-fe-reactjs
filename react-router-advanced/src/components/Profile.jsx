@@ -10,7 +10,7 @@ export default function Profile() {
           <li><Link to="settings">Profile Settings</Link></li>
         </ul>
       </nav>
-      <Outlet /> {/* This renders nested routes */}
+      <Outlet /> {/* Renders ProfileDetails or ProfileSettings */}
     </div>
   );
 }
