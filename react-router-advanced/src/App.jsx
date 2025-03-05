@@ -25,7 +25,7 @@ export default function App() {
           </Route>
 
           {/* ✅ Dynamic Route for Blog Posts */}
-          <Route path="blog/:id" element={<BlogPost />} />
+          <Route path="/blog/:id" element={<BlogPost />} />
         </Route>
       </Routes>
     </Router>
