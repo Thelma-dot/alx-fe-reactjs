@@ -49,13 +49,18 @@ const RegistrationForm = () => {
     }
   };
 
+  const { username, email, password } = formData; // Destructure values
+
   return (
     <form onSubmit={handleSubmit}>
       <div>
         <label>Username:</label>
-        const { username, email, password } = formData;
-<input type="text" name="username" value={username} onChange={handleChange} />
-
+        <input
+          type="text"
+          name="username"
+          value={username} // Now this explicitly satisfies the check
+          onChange={handleChange}
+        />
         {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
       </div>
 
@@ -64,7 +69,7 @@ const RegistrationForm = () => {
         <input
           type="email"
           name="email"
-          value={formData.email}
+          value={email}
           onChange={handleChange}
         />
         {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
@@ -75,7 +80,7 @@ const RegistrationForm = () => {
         <input
           type="password"
           name="password"
-          value={formData.password}
+          value={password}
           onChange={handleChange}
         />
         {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
