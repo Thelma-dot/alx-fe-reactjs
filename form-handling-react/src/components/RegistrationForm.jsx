@@ -53,12 +53,9 @@ const RegistrationForm = () => {
     <form onSubmit={handleSubmit}>
       <div>
         <label>Username:</label>
-        <input
-          type="text"
-          name="username"
-          value={formData.username}
-          onChange={handleChange}
-        />
+        const { username, email, password } = formData;
+<input type="text" name="username" value={username} onChange={handleChange} />
+
         {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
       </div>
 
