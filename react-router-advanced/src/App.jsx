@@ -16,7 +16,7 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
 
-         <Route path="profile" element={<ProtectedRoute />}>
+         <Route path="/profile" element={<ProtectedRoute />}>
             <Route index element={<Profile />} />
             <Route path="details" element={<ProfileDetails />} />
             <Route path="settings" element={<ProfileSettings />} />
