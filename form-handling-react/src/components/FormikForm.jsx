@@ -17,9 +17,9 @@ const FormikForm = () => {
         console.log("Form submitted:", values);
         setTimeout(() => {
           alert("Form submitted successfully!");
-          resetForm(); // Reset form after submission
+          resetForm();
           setSubmitting(false);
-        }, 1000); // Simulate a network request delay
+        }, 1000);
       }}
     >
       {({ isSubmitting }) => (
