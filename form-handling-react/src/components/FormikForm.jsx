@@ -1,3 +1,4 @@
+import React from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 
@@ -13,29 +14,33 @@ const FormikForm = () => {
       initialValues={{ username: "", email: "", password: "" }}
       validationSchema={validationSchema}
       onSubmit={(values, { setSubmitting }) => {
-        console.log("Submitting Formik form data:", values);
+        console.log("Form submitted:", values);
         setSubmitting(false);
       }}
     >
       {({ isSubmitting }) => (
         <Form>
-          <h2>Formik Form</h2>
           <div>
             <label>Username:</label>
             <Field type="text" name="username" />
-            <ErrorMessage name="username" component="p" style={{ color: "red" }} />
+            <ErrorMessage name="username" component="p" className="error-message" />
           </div>
+
           <div>
             <label>Email:</label>
             <Field type="email" name="email" />
-            <ErrorMessage name="email" component="p" style={{ color: "red" }} />
+            <ErrorMessage name="email" component="p" className="error-message" />
           </div>
+
           <div>
             <label>Password:</label>
             <Field type="password" name="password" />
-            <ErrorMessage name="password" component="p" style={{ color: "red" }} />
+            <ErrorMessage name="password" component="p" className="error-message" />
           </div>
-          <button type="submit" disabled={isSubmitting}>Register</button>
+
+          <button type="submit" disabled={isSubmitting}>
+            {isSubmitting ? "Submitting..." : "Register"}
+          </button>
         </Form>
       )}
     </Formik>
