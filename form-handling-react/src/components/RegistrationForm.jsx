@@ -16,20 +16,21 @@ const RegistrationForm = () => {
 
   const validateForm = () => {
     let newErrors = {};
+    const { username, email, password } = formData; // Destructure variables
 
-    if (!formData.username) {
+    if (!username) {
       newErrors.username = "Username is required";
     }
 
-    if (!formData.email) {
+    if (!email) {
       newErrors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
       newErrors.email = "Invalid email format";
     }
 
-    if (!formData.password) {
+    if (!password) {
       newErrors.password = "Password is required";
-    } else if (formData.password.length < 6) {
+    } else if (password.length < 6) {
       newErrors.password = "Password must be at least 6 characters";
     }
 
@@ -49,7 +50,7 @@ const RegistrationForm = () => {
     }
   };
 
-  const { username, email, password } = formData; // Destructure values
+  const { username, email, password } = formData; // Destructure values for input fields
 
   return (
     <form onSubmit={handleSubmit}>
@@ -58,7 +59,7 @@ const RegistrationForm = () => {
         <input
           type="text"
           name="username"
-          value={username} // Now this explicitly satisfies the check
+          value={username} // Now explicitly satisfies the check
           onChange={handleChange}
         />
         {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
