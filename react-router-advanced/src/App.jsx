@@ -16,15 +16,13 @@ export default function App() {
           <Route index element={<Home />} />
           <Route path="login" element={<Login />} />
 
-          {/* ✅ Protected Profile Routes */}
-          <Route element={<ProtectedRoute />}>
-            <Route path="profile" element={<Profile />}>
-              <Route path="details" element={<ProfileDetails />} />
-              <Route path="settings" element={<ProfileSettings />} />
-            </Route>
+         <Route path="profile" element={<ProtectedRoute />}>
+            <Route index element={<Profile />} />
+            <Route path="details" element={<ProfileDetails />} />
+            <Route path="settings" element={<ProfileSettings />} />
           </Route>
 
-          {/* ✅ Dynamic Route for Blog Posts */}
+         
           <Route path="/blog/:id" element={<BlogPost />} />
         </Route>
       </Routes>
