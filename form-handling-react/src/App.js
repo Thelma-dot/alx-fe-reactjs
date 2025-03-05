@@ -1,7 +1,7 @@
 import React from "react";
 import "./App.css";
-import RegistrationForm from "./components/RegistrationForm";
-import FormikForm from "./components/FormikForm";
+import RegistrationForm from "./components/RegistrationForm";  // Ensure correct path
+import FormikForm from "./components/FormikForm";  // Ensure correct path
 
 function App() {
   return (
