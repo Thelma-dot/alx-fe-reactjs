@@ -13,28 +13,32 @@ const FormikForm = () => {
     <Formik
       initialValues={{ username: "", email: "", password: "" }}
       validationSchema={validationSchema}
-      onSubmit={(values, { setSubmitting }) => {
+      onSubmit={(values, { setSubmitting, resetForm }) => {
         console.log("Form submitted:", values);
-        setSubmitting(false);
+        setTimeout(() => {
+          alert("Form submitted successfully!");
+          resetForm(); // Reset form after submission
+          setSubmitting(false);
+        }, 1000); // Simulate a network request delay
       }}
     >
       {({ isSubmitting }) => (
         <Form>
           <div>
             <label>Username:</label>
-            <Field type="text" name="username" />
+            <Field type="text" name="username" autoComplete="off" />
             <ErrorMessage name="username" component="p" className="error-message" />
           </div>
 
           <div>
             <label>Email:</label>
-            <Field type="email" name="email" />
+            <Field type="email" name="email" autoComplete="off" />
             <ErrorMessage name="email" component="p" className="error-message" />
           </div>
 
           <div>
             <label>Password:</label>
-            <Field type="password" name="password" />
+            <Field type="password" name="password" autoComplete="off" />
             <ErrorMessage name="password" component="p" className="error-message" />
           </div>
 
