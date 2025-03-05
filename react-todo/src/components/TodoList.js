@@ -15,7 +15,7 @@ const TodoList = () => {
   };
 
   const toggleTodo = (id) => {
-    setTodos(todos.map(todo => 
+    setTodos(todos.map(todo =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     ));
   };
@@ -26,7 +26,7 @@ const TodoList = () => {
 
   return (
     <div>
-      <h2>Todo List: {todo list}</h2>
+      <h2>Todo List</h2>
       <input 
         type="text" 
         value={text} 
@@ -34,6 +34,7 @@ const TodoList = () => {
         placeholder="Add a new todo"
       />
       <button onClick={addTodo}>Add</button>
+
       <ul>
         {todos.map(todo => (
           <li key={todo.id} onClick={() => toggleTodo(todo.id)}
