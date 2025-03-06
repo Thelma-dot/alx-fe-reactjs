@@ -1,20 +1,17 @@
 import React, { useState } from "react";
 import AddTodoForm from "./AddTodoForm";
+import TodoItem from "./TodoItem";
 
 const TodoList = () => {
   const [todos, setTodos] = useState([
     { id: 1, text: "Learn React", completed: false },
-    { id: 2, text: "Build a project", completed: false },
+    { id: 2, text: "Practice Testing", completed: false },
   ]);
 
-  // Add new todo
   const addTodo = (text) => {
-    if (!text.trim()) return;
-    const newTodo = { id: Date.now(), text, completed: false };
-    setTodos([...todos, newTodo]);
+    setTodos([...todos, { id: Date.now(), text, completed: false }]);
   };
 
-  // Toggle todo completion
   const toggleTodo = (id) => {
     setTodos(
       todos.map((todo) =>
@@ -23,7 +20,6 @@ const TodoList = () => {
     );
   };
 
-  // Delete a todo
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id !== id));
   };
@@ -34,14 +30,7 @@ const TodoList = () => {
       <AddTodoForm addTodo={addTodo} />
       <ul>
         {todos.map((todo) => (
-          <li
-            key={todo.id}
-            style={{ textDecoration: todo.completed ? "line-through" : "none", cursor: "pointer" }}
-            onClick={() => toggleTodo(todo.id)}
-          >
-            {todo.text}
-            <button onClick={(e) => { e.stopPropagation(); deleteTodo(todo.id); }}>Delete</button>
-          </li>
+          <TodoItem key={todo.id} todo={todo} toggleTodo={toggleTodo} deleteTodo={deleteTodo} />
         ))}
       </ul>
     </div>
