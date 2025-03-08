@@ -12,7 +12,7 @@
   },
   "scripts": {
   "start": "react-scripts start",
-  "test": "react-scripts test",
+  "test": "jest",
   "build": "react-scripts build"
 },
  "eslintConfig": {
