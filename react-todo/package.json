@@ -12,11 +12,10 @@
   },
   "scripts": {
   "start": "react-scripts start",
-  "test": "jest",
+  "test": "react-scripts test",
   "build": "react-scripts build"
 },
-
-  "eslintConfig": {
+ "eslintConfig": {
     "extends": [
       "react-app",
       "react-app/jest"
