@@ -1,11 +1,12 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"], // Specify files to scan for classes
+  purge: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"], // Added for older Tailwind compatibility
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"], // Actual Tailwind v3 config
   theme: {
-    extend: {}, // Customize Tailwind here if needed
+    extend: {},
   },
-  darkMode: "class", // Use "media" for system preference or "class" for manual toggle
-  plugins: [], // Add Tailwind plugins here if needed
+  variants: {
+    extend: {}, // Add variants if needed (not required in Tailwind v3)
+  },
+  plugins: [],
 };
-
-  
