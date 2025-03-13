@@ -2,12 +2,14 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './index.css'  // Ensure Tailwind is imported
+import UserProfile from "./components/UserProfile";
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 text-center">
+      <UserProfile />
       <div className="flex space-x-4">
         <a href="https://vite.dev" target="_blank">
           <img src={viteLogo} className="w-24" alt="Vite logo" />
