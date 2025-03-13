@@ -8,5 +8,6 @@ module.exports = {
   variants: {
     extend: {}, // Add variants if needed (not required in Tailwind v3)
   },
+  darkMode: "class",
   plugins: [],
 };
