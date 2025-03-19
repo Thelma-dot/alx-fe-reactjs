@@ -4,6 +4,7 @@ import RecipeDetails from './pages/RecipeDetails';
 import AddRecipe from './pages/AddRecipe';
 import React from 'react';
 import HomePage from './components/HomePage';
+import AddRecipeForm from './components/AddRecipeForm';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/recipe/:id" element={<RecipeDetails />} />
         <Route path="/add" element={<AddRecipe />} />
+        <Route path="/add-recipe" element={<AddRecipeForm />} />
       </Routes>
     </div>
   );
