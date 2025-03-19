@@ -6,35 +6,61 @@ const AddRecipeForm = ({ onAddRecipe }) => {
   const [image, setImage] = useState('');
   const [ingredients, setIngredients] = useState(['']);
   const [steps, setSteps] = useState(['']);
-  const [error, setError] = useState('');
+  const [errors, setErrors] = useState({});
+
+  const validate = () => {
+    const newErrors = {};
+
+    if (!title.trim()) {
+      newErrors.title = 'Title is required';
+    }
+
+    if (!summary.trim()) {
+      newErrors.summary = 'Summary is required';
+    }
+
+    if (!image.trim()) {
+      newErrors.image = 'Image URL is required';
+    }
+
+    if (ingredients.some((ingredient) => !ingredient.trim())) {
+      newErrors.ingredients = 'All ingredient fields must be filled';
+    }
+
+    if (steps.some((step) => !step.trim())) {
+      newErrors.steps = 'All step fields must be filled';
+    }
+
+    setErrors(newErrors);
+
+    // Return true if no errors
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!title || !summary || !image || ingredients.length === 0 || steps.length === 0) {
-      setError('Please fill in all fields.');
-      return;
+    if (validate()) {
+      const newRecipe = {
+        id: Date.now(),
+        title,
+        summary,
+        image,
+        ingredients,
+        steps,
+        isUserAdded: true,
+      };
+
+      onAddRecipe(newRecipe);
+
+      // Reset form
+      setTitle('');
+      setSummary('');
+      setImage('');
+      setIngredients(['']);
+      setSteps(['']);
+      setErrors({});
     }
-
-    const newRecipe = {
-      id: Date.now(),
-      title,
-      summary,
-      image,
-      ingredients,
-      steps,
-      isUserAdded: true,
-    };
-
-    onAddRecipe(newRecipe);
-
-    // Clear fields
-    setTitle('');
-    setSummary('');
-    setImage('');
-    setIngredients(['']);
-    setSteps(['']);
-    setError('');
   };
 
   const handleIngredientChange = (index, value) => {
@@ -60,8 +86,8 @@ const AddRecipeForm = ({ onAddRecipe }) => {
   return (
     <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
       <h2 className="text-2xl font-semibold mb-4">Add New Recipe</h2>
-      {error && <p className="text-red-500 mb-4">{error}</p>}
 
+      {/* Title */}
       <div className="mb-4">
         <label className="block mb-1 font-medium">Recipe Title</label>
         <input
@@ -70,8 +96,10 @@ const AddRecipeForm = ({ onAddRecipe }) => {
           onChange={(e) => setTitle(e.target.value)}
           className="w-full border rounded px-3 py-2"
         />
+        {errors.title && <p className="text-red-500 text-sm mt-1">{errors.title}</p>}
       </div>
 
+      {/* Summary */}
       <div className="mb-4">
         <label className="block mb-1 font-medium">Summary</label>
         <textarea
@@ -79,8 +107,10 @@ const AddRecipeForm = ({ onAddRecipe }) => {
           onChange={(e) => setSummary(e.target.value)}
           className="w-full border rounded px-3 py-2"
         ></textarea>
+        {errors.summary && <p className="text-red-500 text-sm mt-1">{errors.summary}</p>}
       </div>
 
+      {/* Image */}
       <div className="mb-4">
         <label className="block mb-1 font-medium">Image URL</label>
         <input
@@ -89,6 +119,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
           onChange={(e) => setImage(e.target.value)}
           className="w-full border rounded px-3 py-2"
         />
+        {errors.image && <p className="text-red-500 text-sm mt-1">{errors.image}</p>}
       </div>
 
       {/* Ingredients */}
@@ -104,6 +135,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
             className="w-full border rounded px-3 py-2 mb-2"
           />
         ))}
+        {errors.ingredients && <p className="text-red-500 text-sm mt-1">{errors.ingredients}</p>}
         <button
           type="button"
           onClick={addIngredientField}
@@ -125,6 +157,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
             className="w-full border rounded px-3 py-2 mb-2"
           ></textarea>
         ))}
+        {errors.steps && <p className="text-red-500 text-sm mt-1">{errors.steps}</p>}
         <button
           type="button"
           onClick={addStepField}
