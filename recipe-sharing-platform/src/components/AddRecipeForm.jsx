@@ -4,12 +4,14 @@ const AddRecipeForm = ({ onAddRecipe }) => {
   const [title, setTitle] = useState('');
   const [summary, setSummary] = useState('');
   const [image, setImage] = useState('');
+  const [ingredients, setIngredients] = useState(['']);
+  const [steps, setSteps] = useState(['']);
   const [error, setError] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!title || !summary || !image) {
+    if (!title || !summary || !image || ingredients.length === 0 || steps.length === 0) {
       setError('Please fill in all fields.');
       return;
     }
@@ -19,21 +21,47 @@ const AddRecipeForm = ({ onAddRecipe }) => {
       title,
       summary,
       image,
+      ingredients,
+      steps,
       isUserAdded: true,
     };
 
     onAddRecipe(newRecipe);
+
     // Clear fields
     setTitle('');
     setSummary('');
     setImage('');
+    setIngredients(['']);
+    setSteps(['']);
     setError('');
+  };
+
+  const handleIngredientChange = (index, value) => {
+    const updatedIngredients = [...ingredients];
+    updatedIngredients[index] = value;
+    setIngredients(updatedIngredients);
+  };
+
+  const handleStepChange = (index, value) => {
+    const updatedSteps = [...steps];
+    updatedSteps[index] = value;
+    setSteps(updatedSteps);
+  };
+
+  const addIngredientField = () => {
+    setIngredients([...ingredients, '']);
+  };
+
+  const addStepField = () => {
+    setSteps([...steps, '']);
   };
 
   return (
     <form onSubmit={handleSubmit} className="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-md">
       <h2 className="text-2xl font-semibold mb-4">Add New Recipe</h2>
       {error && <p className="text-red-500 mb-4">{error}</p>}
+
       <div className="mb-4">
         <label className="block mb-1 font-medium">Recipe Title</label>
         <input
@@ -43,6 +71,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
           className="w-full border rounded px-3 py-2"
         />
       </div>
+
       <div className="mb-4">
         <label className="block mb-1 font-medium">Summary</label>
         <textarea
@@ -51,6 +80,7 @@ const AddRecipeForm = ({ onAddRecipe }) => {
           className="w-full border rounded px-3 py-2"
         ></textarea>
       </div>
+
       <div className="mb-4">
         <label className="block mb-1 font-medium">Image URL</label>
         <input
@@ -60,6 +90,50 @@ const AddRecipeForm = ({ onAddRecipe }) => {
           className="w-full border rounded px-3 py-2"
         />
       </div>
+
+      {/* Ingredients */}
+      <div className="mb-4">
+        <label className="block mb-2 font-medium">Ingredients</label>
+        {ingredients.map((ingredient, index) => (
+          <input
+            key={index}
+            type="text"
+            value={ingredient}
+            onChange={(e) => handleIngredientChange(index, e.target.value)}
+            placeholder={`Ingredient ${index + 1}`}
+            className="w-full border rounded px-3 py-2 mb-2"
+          />
+        ))}
+        <button
+          type="button"
+          onClick={addIngredientField}
+          className="text-blue-500 hover:underline"
+        >
+          + Add Ingredient
+        </button>
+      </div>
+
+      {/* Steps */}
+      <div className="mb-4">
+        <label className="block mb-2 font-medium">Steps</label>
+        {steps.map((step, index) => (
+          <textarea
+            key={index}
+            value={step}
+            onChange={(e) => handleStepChange(index, e.target.value)}
+            placeholder={`Step ${index + 1}`}
+            className="w-full border rounded px-3 py-2 mb-2"
+          ></textarea>
+        ))}
+        <button
+          type="button"
+          onClick={addStepField}
+          className="text-blue-500 hover:underline"
+        >
+          + Add Step
+        </button>
+      </div>
+
       <button type="submit" className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
         Add Recipe
       </button>
