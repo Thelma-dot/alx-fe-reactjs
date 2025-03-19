@@ -1,43 +1,43 @@
-[
-  {
-    "id": 1,
-    "title": "Spaghetti Carbonara",
-    "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
-    "image": "https://via.placeholder.com/300",
-    "ingredients": ["200g spaghetti", "2 eggs", "100g pancetta", "50g parmesan", "Black pepper"],
-    "instructions": [
-      "Boil spaghetti according to package instructions.",
-      "Fry pancetta until crispy.",
-      "Beat eggs and mix with grated parmesan.",
-      "Combine hot pasta with pancetta, then quickly mix in egg mixture.",
-      "Season with black pepper and serve."
-    ]
-  },
-  {
-    "id": 2,
-    "title": "Chicken Tikka Masala",
-    "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
-    "image": "https://via.placeholder.com/300",
-    "ingredients": ["500g chicken breast", "1 cup yogurt", "2 tbsp tikka masala spice", "1 cup tomato puree", "100ml cream"],
-    "instructions": [
-      "Marinate chicken in yogurt and spice mix, refrigerate for 1 hour.",
-      "Grill or pan-fry chicken pieces until cooked.",
-      "In a pan, cook tomato puree with cream and spices.",
-      "Add grilled chicken to sauce and simmer for 10 minutes.",
-      "Serve with rice or naan."
-    ]
-  },
-  {
-    "id": 3,
-    "title": "Beef Stroganoff",
-    "summary": "Tender beef strips cooked in a creamy mushroom sauce served over noodles.",
-    "image": "https://via.placeholder.com/300",
-    "ingredients": ["500g beef strips", "200g mushrooms", "1 onion", "200ml sour cream", "Egg noodles"],
-    "instructions": [
-      "Sauté onions and mushrooms until soft.",
-      "Add beef strips and cook until browned.",
-      "Stir in sour cream and simmer for a few minutes.",
-      "Serve over cooked egg noodles."
-    ]
-  }
-]
+{
+      "id": 1,
+      "title": "Spaghetti Carbonara",
+      "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
+      "image": "/images/Carbonara.png",
+      "ingredients": ["200g spaghetti", "2 eggs", "100g pancetta", "50g parmesan", "Black pepper"],
+      "instructions": [
+        "Boil spaghetti according to package instructions.",
+        "Fry pancetta until crispy.",
+        "Beat eggs and mix with grated parmesan.",
+        "Combine hot pasta with pancetta, then quickly mix in egg mixture.",
+        "Season with black pepper and serve."
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Chicken Tikka Masala",
+      "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
+      "image": "/images/Tikka.png",
+      "ingredients": ["500g chicken breast", "1 cup yogurt", "2 tbsp tikka masala spice", "1 cup tomato puree", "100ml cream"],
+      "instructions": [
+        "Marinate chicken in yogurt and spice mix, refrigerate for 1 hour.",
+        "Grill or pan-fry chicken pieces until cooked.",
+        "In a pan, cook tomato puree with cream and spices.",
+        "Add grilled chicken to sauce and simmer for 10 minutes.",
+        "Serve with rice or naan."
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Beef Stroganoff",
+      "summary": "Tender beef strips cooked in a creamy mushroom sauce served over noodles.",
+      "image": "/images/stroganoff.png",
+      "ingredients": ["500g beef strips", "200g mushrooms", "1 onion", "200ml sour cream", "Egg noodles"],
+      "instructions": [
+        "Sauté onions and mushrooms until soft.",
+        "Add beef strips and cook until browned.",
+        "Stir in sour cream and simmer for a few minutes.",
+        "Serve over cooked egg noodles."
+      ]
+    }
+  ]
+  
