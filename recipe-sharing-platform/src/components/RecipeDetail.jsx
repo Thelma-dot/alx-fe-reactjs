@@ -14,26 +14,30 @@ const RecipeDetail = () => {
   if (!recipe) return <div className="text-center p-10">Loading...</div>;
 
   return (
-    <div className="max-w-4xl mx-auto p-5">
+    <div className="max-w-4xl mx-auto p-6 mt-10 bg-white rounded-lg shadow-lg">
+      <img
+        src={recipe.image}
+        alt={recipe.title}
+        className="w-full h-64 object-cover rounded-md mb-6"
+      />
       <h1 className="text-3xl font-bold mb-4">{recipe.title}</h1>
-      <img src={recipe.image} alt={recipe.title} className="w-full rounded-lg mb-5" />
-      <p className="mb-4 text-lg">{recipe.summary}</p>
+      <p className="text-gray-700 mb-6">{recipe.summary}</p>
 
-      <div className="mb-4">
-        <h2 className="text-2xl font-semibold mb-2">Ingredients:</h2>
-        <ul className="list-disc list-inside space-y-2">
-          {recipe.ingredients?.map((ingredient, index) => (
-            <li key={index}>{ingredient}</li>
-          ))}
+      <div className="mt-8">
+        <h2 className="text-2xl font-semibold mb-3">Ingredients:</h2>
+        <ul className="list-disc list-inside mb-6 text-gray-600">
+          <li>Ingredient 1</li>
+          <li>Ingredient 2</li>
+          <li>Ingredient 3</li>
+          {/* Replace with real ingredients if available */}
         </ul>
-      </div>
 
-      <div>
-        <h2 className="text-2xl font-semibold mb-2">Instructions:</h2>
-        <ol className="list-decimal list-inside space-y-2">
-          {recipe.instructions?.map((step, index) => (
-            <li key={index}>{step}</li>
-          ))}
+        <h2 className="text-2xl font-semibold mb-3">Cooking Instructions:</h2>
+        <ol className="list-decimal list-inside text-gray-600">
+          <li>Step 1: Do this.</li>
+          <li>Step 2: Do that.</li>
+          <li>Step 3: Serve & enjoy!</li>
+          {/* Replace with real instructions if available */}
         </ol>
       </div>
     </div>
