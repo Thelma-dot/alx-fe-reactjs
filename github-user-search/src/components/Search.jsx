@@ -33,6 +33,13 @@ export default function Search() {
           onChange={(e) => setUsername(e.target.value)}
           className="border p-2 rounded w-full"
         />
+        <input
+          type="text"
+          placeholder="Enter location..."
+          value={location}
+          onChange={(e) => setLocation(e.target.value)}
+          className="border p-2 rounded w-full"
+        />
         <button type="submit" className="bg-blue-500 text-white p-2 rounded">
           Search
         </button>
