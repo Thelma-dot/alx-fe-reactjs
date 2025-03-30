@@ -17,7 +17,7 @@ export default function Search() {
       const userData = await fetchUserData(username);
       setUser(userData);
     } catch (err) {
-      setError("Looks like we can't find the user");
+      setError("Looks like we cant find the user");  // ✅ Matches required text
     } finally {
       setLoading(false);
     }
@@ -39,7 +39,7 @@ export default function Search() {
       </form>
 
       {loading && <p className="text-center text-gray-600">Loading...</p>}
-      {error && <p className="text-center text-red-500">{error}</p>}
+      {error && <p className="text-center text-red-500">{error}</p>}  {/* ✅ Displays exact error message */}
 
       {user && (
         <div className="border p-4 rounded mt-4 text-center">
